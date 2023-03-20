@@ -12,7 +12,7 @@
 .idea
 pom.xml
 .target/
-.xml
+*.xml
 
 # AWS User-specific
 .idea/**/aws.xml
