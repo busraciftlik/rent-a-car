@@ -14,7 +14,6 @@ pom.xml
 .target/
 .xml
 
-
 # AWS User-specific
 .idea/**/aws.xml
 
