@@ -9,6 +9,7 @@
 .idea/**/shelf
 .idea/
 *.iml
+pom.xml
 
 # AWS User-specific
 .idea/**/aws.xml
@@ -53,7 +54,7 @@ cmake-build-*/
 
 # IntelliJ
 out/
-
+target/
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
