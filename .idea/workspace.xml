@@ -4,31 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3812776-c242-4dd3-b331-2ae0eed65988" name="Changes" comment="" />
+    <list default="true" id="4c99d3ce-2dfc-4db5-a339-0079a2242e50" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/busraciftlik/business/concretes/BrandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/busraciftlik/business/concretes/BrandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/busraciftlik/entities/concretes/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/busraciftlik/entities/concretes/Brand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/busraciftlik/repository/abstracts/BrandRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/busraciftlik/repository/abstracts/BrandRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/busraciftlik/repository/concretes/InMemoryBrandRepository.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/resources/application.properties" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectId" id="2NHBJeVdAEaXa34e0DaFmqynQGm" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2NVIOZp7ex9aQNFnI6G4RKVOQKJ" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -41,23 +42,31 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/turkcelljavabootcamp/TurkcellJavaBootcamp",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "last_opened_file_path": "D:/turkcelljavabootcamp/rent-a-car",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.import",
+    "spring.configuration.checksum": "115742574a0e0746ed604c6e5f482635",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\turkcelljavabootcamp\rent-a-car\rent-a-car\src\main\java" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\turkcelljavabootcamp\rent-a-car\rent-a-car" />
-      <recent name="D:\turkcelljavabootcamp\rent-a-car\rent-a-car\src" />
+      <recent name="D:\turkcelljavabootcamp\rent-a-car\src\main\resources" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="RentACarApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="RentACarApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="rent-a-car" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.busraciftlik.RentACarApplication" />
       <method v="2">
@@ -68,27 +77,21 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c3812776-c242-4dd3-b331-2ae0eed65988" name="Changes" comment="" />
-      <created>1679311060806</created>
+      <changelist id="4c99d3ce-2dfc-4db5-a339-0079a2242e50" name="Changes" comment="" />
+      <created>1679742801045</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1679311060806</updated>
-      <workItem from="1679311063728" duration="9889000" />
+      <updated>1679742801045</updated>
+      <workItem from="1679742801048" duration="8203000" />
+      <workItem from="1679751532355" duration="991000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
