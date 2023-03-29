@@ -11,7 +11,7 @@
 *.iml
 .idea
 pom.xml
-.target
+.target/
 *.xml
 
 # AWS User-specific
