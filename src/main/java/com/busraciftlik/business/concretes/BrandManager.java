@@ -35,8 +35,8 @@ public class BrandManager implements BrandService {
     public CreateBrandResponse add(CreateBrandRequest request) {
         Brand brand = modelMapper.map(request, Brand.class);
         brand.setId(0);
-        brandRepository.save(brand);
-        CreateBrandResponse response = modelMapper.map(brand, CreateBrandResponse.class);
+        Brand createdBrand = brandRepository.save(brand);
+        CreateBrandResponse response = modelMapper.map(createdBrand, CreateBrandResponse.class);
         return response;
     }
 
@@ -59,5 +59,9 @@ public class BrandManager implements BrandService {
     @Override
     public void delete(int id) {
         brandRepository.deleteById(id);
+    }
+
+    private void checkIfBrandExists(int id){
+
     }
 }
