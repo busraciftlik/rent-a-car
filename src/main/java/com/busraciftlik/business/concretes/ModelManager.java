@@ -23,43 +23,54 @@ public class ModelManager implements ModelService {
 
     @Override
     public List<GetAllModelsResponse> getAll() {
-
         List<Model> models = modelRepository.findAll();
-        List<GetAllModelsResponse> responses = models
+        List<GetAllModelsResponse> response = models
                 .stream()
                 .map(model -> modelMapper.map(model, GetAllModelsResponse.class))
                 .toList();
 
-        return responses;
+        return response;
+    }
+
+    @Override
+    public GetModelResponse getById(int id) {
+        checkIfModelExists(id);
+        Model model = modelRepository.findById(id).orElseThrow();
+        GetModelResponse response = modelMapper.map(model, GetModelResponse.class);
+
+        return response;
     }
 
     @Override
     public CreateModelResponse add(CreateModelRequest request) {
         Model model = modelMapper.map(request, Model.class);
         model.setId(0);
-        Model createdModel = modelRepository.save(model);
-        CreateModelResponse response = modelMapper.map(createdModel, CreateModelResponse.class);
+        modelRepository.save(model);
+        CreateModelResponse response = modelMapper.map(model, CreateModelResponse.class);
+
         return response;
     }
 
     @Override
     public UpdateModelResponse update(int id, UpdateModelRequest request) {
+        checkIfModelExists(id);
         Model model = modelMapper.map(request, Model.class);
         model.setId(id);
         modelRepository.save(model);
         UpdateModelResponse response = modelMapper.map(model, UpdateModelResponse.class);
+
         return response;
     }
 
     @Override
-    public GetModelResponse getById(int id) {
-        Model model = modelRepository.findById(id).orElseThrow();
-        GetModelResponse getModelResponse = modelMapper.map(model, GetModelResponse.class);
-        return getModelResponse;
+    public void delete(int id) {
+        checkIfModelExists(id);
+        modelRepository.deleteById(id);
     }
 
-    @Override
-    public void delete(int id) {
-        modelRepository.deleteById(id);
+    private void checkIfModelExists(int id) {
+        if(!modelRepository.existsById(id)){
+            throw new RuntimeException("No such a model found!");
+        }
     }
 }

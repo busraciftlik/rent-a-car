@@ -1,22 +1,22 @@
 package com.busraciftlik.business.dto.responses.get;
 
-import com.busraciftlik.entities.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllCarsResponse {
+public class GetAllRentalsResponse {
     private int id;
-    private int modelYear;
-    private String plate;
+    private int carId;
     private double dailyPrice;
-    private State state ;
-    private int modelId;
-//    private String modelName;
-//    private String modelBrandName;
+    private int rentedForDays;
+    private double totalPrice;
+    private LocalDateTime startDate;
+
 }

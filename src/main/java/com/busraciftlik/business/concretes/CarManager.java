@@ -8,6 +8,7 @@ import com.busraciftlik.business.dto.responses.get.GetAllCarsResponse;
 import com.busraciftlik.business.dto.responses.get.GetCarResponse;
 import com.busraciftlik.business.dto.responses.update.UpdateCarResponse;
 import com.busraciftlik.entities.Car;
+import com.busraciftlik.entities.enums.State;
 import com.busraciftlik.repository.abstracts.CarRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -15,49 +16,79 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@AllArgsConstructor
 @Service
+@AllArgsConstructor
 public class CarManager implements CarService {
-    private final CarRepository carRepository;
-    private ModelMapper modelMapper;
+    private final CarRepository repository;
+    private final ModelMapper mapper;
 
     @Override
-    public List<GetAllCarsResponse> getAll() {
-        List<Car> cars = carRepository.findAll();
-        List<GetAllCarsResponse> responses = cars
+    public List<GetAllCarsResponse> getAll(boolean includeMaintenance) {
+        List<Car> cars = filterCarsByMaintenanceState(includeMaintenance);
+        List<GetAllCarsResponse> response = cars
                 .stream()
-                .map(car -> modelMapper.map(car, GetAllCarsResponse.class))
+                .map(car -> mapper.map(car, GetAllCarsResponse.class))
                 .toList();
-        return responses;
-    }
 
-    @Override
-    public CreateCarResponse add(CreateCarRequest request) {
-        Car car = modelMapper.map(request, Car.class);
-        car.setId(0);
-        Car createdCar = carRepository.save(car);
-        CreateCarResponse response = modelMapper.map(createdCar, CreateCarResponse.class);
-        return response;
-    }
-
-    @Override
-    public UpdateCarResponse update(int id, UpdateCarRequest request) {
-        Car car = modelMapper.map(request, Car.class);
-        car.setId(id);
-        carRepository.save(car);
-        UpdateCarResponse response = modelMapper.map(car, UpdateCarResponse.class);
         return response;
     }
 
     @Override
     public GetCarResponse getById(int id) {
-        Car car = carRepository.findById(id).orElseThrow();
-        GetCarResponse getCarResponse = modelMapper.map(car, GetCarResponse.class);
-        return getCarResponse;
+        checkIfExistsById(id);
+        Car car = repository.findById(id).orElseThrow();
+        GetCarResponse response = mapper.map(car, GetCarResponse.class);
+
+        return response;
+    }
+
+    @Override
+    public CreateCarResponse add(CreateCarRequest request) {
+        Car car = mapper.map(request, Car.class);
+        car.setId(0);
+        car.setState(State.AVAILABLE);
+        repository.save(car);
+        CreateCarResponse response = mapper.map(car, CreateCarResponse.class);
+
+        return response;
+    }
+
+    @Override
+    public UpdateCarResponse update(int id, UpdateCarRequest request) {
+        checkIfExistsById(id);
+        Car car = mapper.map(request, Car.class);
+        car.setId(id);
+        repository.save(car);
+        UpdateCarResponse response = mapper.map(car, UpdateCarResponse.class);
+
+        return response;
     }
 
     @Override
     public void delete(int id) {
-        carRepository.deleteById(id);
+        checkIfExistsById(id);
+        repository.deleteById(id);
+    }
+
+    @Override
+    public void changeState(int carId, State state) {
+        Car car = repository.findById(carId).orElseThrow();
+        car.setState(state);
+        repository.save(car);
+    }
+
+    private void checkIfExistsById(int id) {
+        if (!repository.existsById(id)) {
+            throw new RuntimeException("No such car found!");
+        }
+    }
+
+    private List<Car> filterCarsByMaintenanceState(boolean includeMaintenance) {
+        if (includeMaintenance) {
+            return repository.findAll();
+        }
+
+        return repository.findAllByStateIsNot(State.MAINTENANCE);
     }
 }
+

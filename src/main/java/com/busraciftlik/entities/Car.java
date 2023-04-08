@@ -25,8 +25,9 @@ public class Car {
     @Enumerated(EnumType.STRING)
     private State state;
     @ManyToOne
-    @JoinColumn(name = "model_id")
     private Model model;
     @OneToMany(mappedBy = "car")
     private List<Maintenance> maintenances;
+    @OneToMany(mappedBy = "car")
+    private List<Rental> rentals;
 }
