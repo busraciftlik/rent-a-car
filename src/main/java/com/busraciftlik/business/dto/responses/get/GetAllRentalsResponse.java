@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class GetAllRentalsResponse {
     private int id;
     private int carId;
@@ -18,5 +19,4 @@ public class GetAllRentalsResponse {
     private int rentedForDays;
     private double totalPrice;
     private LocalDateTime startDate;
-
 }
