@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -26,11 +27,3 @@ public class Rental {
     private Car car;
 
 }
-
-/*1. Araçlar kiralanabilmelidir (rental)
-      2. Kiraya gönderilen aracın durumu güncellenmelidir.
-        3. Kirada veya bakımda olan bir araç kiralanamamalı.
-        4. totalPrice alanı sadece okunabilmelidir.
-        5. Kiradan dönen aracın durumu (rental delete işlemi ile) güncellenmelidir.
-
- */

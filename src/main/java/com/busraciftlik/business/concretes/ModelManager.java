@@ -7,6 +7,7 @@ import com.busraciftlik.business.dto.responses.create.CreateModelResponse;
 import com.busraciftlik.business.dto.responses.get.GetAllModelsResponse;
 import com.busraciftlik.business.dto.responses.get.GetModelResponse;
 import com.busraciftlik.business.dto.responses.update.UpdateModelResponse;
+import com.busraciftlik.business.rules.ModelBusinessRules;
 import com.busraciftlik.entities.Model;
 import com.busraciftlik.repository.abstracts.ModelRepository;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,7 @@ import java.util.List;
 public class ModelManager implements ModelService {
     private final ModelRepository modelRepository;
     private ModelMapper modelMapper;
+    private final ModelBusinessRules rules;
 
     @Override
     public List<GetAllModelsResponse> getAll() {
@@ -34,7 +36,7 @@ public class ModelManager implements ModelService {
 
     @Override
     public GetModelResponse getById(int id) {
-        checkIfModelExists(id);
+        rules.checkIfModelExists(id);
         Model model = modelRepository.findById(id).orElseThrow();
         GetModelResponse response = modelMapper.map(model, GetModelResponse.class);
 
@@ -53,7 +55,7 @@ public class ModelManager implements ModelService {
 
     @Override
     public UpdateModelResponse update(int id, UpdateModelRequest request) {
-        checkIfModelExists(id);
+        rules.checkIfModelExists(id);
         Model model = modelMapper.map(request, Model.class);
         model.setId(id);
         modelRepository.save(model);
@@ -64,13 +66,9 @@ public class ModelManager implements ModelService {
 
     @Override
     public void delete(int id) {
-        checkIfModelExists(id);
+        rules.checkIfModelExists(id);
         modelRepository.deleteById(id);
     }
 
-    private void checkIfModelExists(int id) {
-        if(!modelRepository.existsById(id)){
-            throw new RuntimeException("No such a model found!");
-        }
-    }
+
 }

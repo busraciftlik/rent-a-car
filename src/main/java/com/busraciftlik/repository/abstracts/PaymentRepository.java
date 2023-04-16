@@ -1,16 +1,15 @@
 package com.busraciftlik.repository.abstracts;
 
-import com.busraciftlik.business.dto.requests.PaymentRequest;
 import com.busraciftlik.entities.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
-public interface PaymentRepository extends JpaRepository<Payment,Integer> {
+public interface PaymentRepository extends JpaRepository<Payment, Integer> {
     Payment findByCardNumber(String cardNumber);
+
     boolean existsByCardNumber(String cardNumber);
+
     boolean existsByCardNumberAndCardHolderAndCardExpirationYearAndCardExpirationMonthAndCardCvv(
-            String cardNumber, String cardHolder,int cardExpirationYear, int cardExpirationMonth, String cardCvv
+            String cardNumber, String cardHolder, int cardExpirationYear, int cardExpirationMonth, String cardCvv
     );
 }
 

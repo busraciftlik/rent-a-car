@@ -34,6 +34,7 @@ public class MaintenancesController {
     public CreateMaintenanceResponse add(@RequestBody CreateMaintenanceRequest request) {
         return maintenanceService.add(request);
     }
+
     @PutMapping("/return")
     public GetMaintenanceResponse returnCarFromMaintenance(@RequestParam int carId) {
         return maintenanceService.returnCarFromMaintenance(carId);

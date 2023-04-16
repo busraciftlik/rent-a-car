@@ -16,10 +16,10 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 public class PaymentRequest { // Base / super class
     @NotBlank(message = "Kart numarası boş bırakılamaz") // Boş bırakılamaz
-    @Length(min=16,max=16,message = "Kart numarası 16 haneden oluşmak zorundadır")
+    @Length(min = 16, max = 16, message = "Kart numarası 16 haneden oluşmak zorundadır")
     private String cardNumber;
     @NotBlank
-    @Length(min=5)
+    @Length(min = 5)
     private String cardHolder;
 
     @NotNull
@@ -32,6 +32,6 @@ public class PaymentRequest { // Base / super class
     private int cardExpirationMonth;
 
     @NotBlank
-    @Length(min = 3,max = 3)
+    @Length(min = 3, max = 3)
     private String cardCvv;
 }

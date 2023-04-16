@@ -17,7 +17,7 @@ public interface PaymentService {
 
     CreatePaymentResponse add(CreatePaymentRequest request);
 
-    UpdatePaymentResponse update(int id,UpdatePaymentRequest request);
+    UpdatePaymentResponse update(int id, UpdatePaymentRequest request);
 
     void delete(int id);
 

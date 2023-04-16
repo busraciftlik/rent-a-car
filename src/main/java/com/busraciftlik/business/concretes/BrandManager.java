@@ -7,6 +7,7 @@ import com.busraciftlik.business.dto.responses.create.CreateBrandResponse;
 import com.busraciftlik.business.dto.responses.get.GetAllBrandsResponse;
 import com.busraciftlik.business.dto.responses.get.GetBrandResponse;
 import com.busraciftlik.business.dto.responses.update.UpdateBrandResponse;
+import com.busraciftlik.business.rules.BrandBusinessRules;
 import com.busraciftlik.entities.Brand;
 import com.busraciftlik.repository.abstracts.BrandRepository;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,7 @@ import java.util.List;
 public class BrandManager implements BrandService {
     private final BrandRepository brandRepository;
     private final ModelMapper modelMapper;
+    private final BrandBusinessRules rules;
 
     @Override
     public List<GetAllBrandsResponse> getAll() {
@@ -33,6 +35,7 @@ public class BrandManager implements BrandService {
 
     @Override
     public CreateBrandResponse add(CreateBrandRequest request) {
+        rules.checkIfBrandExistsByName(request.getName());
         Brand brand = modelMapper.map(request, Brand.class);
         brand.setId(0);
         Brand createdBrand = brandRepository.save(brand);
@@ -42,15 +45,17 @@ public class BrandManager implements BrandService {
 
     @Override
     public UpdateBrandResponse update(int id, UpdateBrandRequest request) {
-        Brand brand = modelMapper.map(request,Brand.class);
+        rules.checkIfBrandExists(id);
+        Brand brand = modelMapper.map(request, Brand.class);
         brand.setId(id);
         brandRepository.save(brand);
-        UpdateBrandResponse updateBrandResponse = modelMapper.map(brand,UpdateBrandResponse.class);
-        return updateBrandResponse ;
+        UpdateBrandResponse updateBrandResponse = modelMapper.map(brand, UpdateBrandResponse.class);
+        return updateBrandResponse;
     }
 
     @Override
     public GetBrandResponse getById(int id) {
+        rules.checkIfBrandExists(id);
         Brand brand = brandRepository.findById(id).orElseThrow();
         GetBrandResponse getBrandResponse = modelMapper.map(brand, GetBrandResponse.class);
         return getBrandResponse;
@@ -58,10 +63,7 @@ public class BrandManager implements BrandService {
 
     @Override
     public void delete(int id) {
+        rules.checkIfBrandExists(id);
         brandRepository.deleteById(id);
-    }
-
-    private void checkIfBrandExists(int id){
-
     }
 }
