@@ -5,20 +5,16 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter
 @Setter
-public class ExceptionResult<T extends Exception> {
+@Getter
+public class ExceptionResult<T> {
     private LocalDateTime timestamp;
     private String type;
-    private String message;
+    private T message;
 
-    public ExceptionResult(Class<T> type, String message) {
-        this.timestamp = LocalDateTime.now();
-        this.type = convertToUpperCaseWithUnderscores(type.getSimpleName());
+    public ExceptionResult(String type, T message) {
+        timestamp = LocalDateTime.now();
+        this.type = type;
         this.message = message;
-    }
-
-    private String convertToUpperCaseWithUnderscores(String camelCaseString) {
-        return camelCaseString.replaceAll("(.)(\\p{Upper})", "$1_$2").toUpperCase();
     }
 }

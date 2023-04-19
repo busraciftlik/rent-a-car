@@ -22,7 +22,7 @@ import java.util.List;
 public class CarManager implements CarService {
     private final CarRepository repository;
     private final ModelMapper mapper;
-    private final CarBusinessRules rules
+    private final CarBusinessRules rules;
 
     @Override
     public List<GetAllCarsResponse> getAll(boolean includeMaintenance) {

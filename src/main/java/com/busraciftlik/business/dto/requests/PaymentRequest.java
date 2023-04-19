@@ -22,11 +22,9 @@ public class PaymentRequest { // Base / super class
     @Length(min = 5)
     private String cardHolder;
 
-    @NotNull
     @Min((2023))
     private int cardExpirationYear;
 
-    @NotNull
     @Min(value = 1)
     @Max(value = 12)
     private int cardExpirationMonth;

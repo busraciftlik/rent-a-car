@@ -7,6 +7,7 @@ import com.busraciftlik.business.dto.responses.create.CreateCarResponse;
 import com.busraciftlik.business.dto.responses.get.GetAllCarsResponse;
 import com.busraciftlik.business.dto.responses.get.GetCarResponse;
 import com.busraciftlik.business.dto.responses.update.UpdateCarResponse;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -31,12 +32,12 @@ public class CarsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateCarResponse add(@RequestBody CreateCarRequest request) {
+    public CreateCarResponse add(@Valid @RequestBody CreateCarRequest request) {
         return service.add(request);
     }
 
     @PutMapping("/{id}")
-    public UpdateCarResponse update(@PathVariable int id, @RequestBody UpdateCarRequest request) {
+    public UpdateCarResponse update(@PathVariable int id, @Valid @RequestBody UpdateCarRequest request) {
         return service.update(id, request);
     }
 
