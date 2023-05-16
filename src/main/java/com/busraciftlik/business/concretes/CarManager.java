@@ -79,7 +79,6 @@ public class CarManager implements CarService {
         repository.save(car);
     }
 
-
     private List<Car> filterCarsByMaintenanceState(boolean includeMaintenance) {
         if (includeMaintenance) {
             return repository.findAll();
